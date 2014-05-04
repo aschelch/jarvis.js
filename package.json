@@ -2,5 +2,9 @@
   "name": "Jarvis",
   "version": "0.0.1",
   "description": "",
-  "author": "Aurélien Schelcher <aurelien.schelcher@gmail.com>"
+  "author": "Aurélien Schelcher <aurelien.schelcher@gmail.com>",
+  "devDependencies": {
+    "request": "~2.34.0",
+    "commander": "~2.2.0"
+  }
 }
