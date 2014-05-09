@@ -1,9 +1,9 @@
 {
-  "name": "Jarvis",
+  "name": "Jarvis.js",
   "version": "0.0.1",
   "description": "",
   "author": "Aurélien Schelcher <aurelien.schelcher@gmail.com>",
-  "devDependencies": {
+  "dependencies": {
     "request": "~2.34.0",
     "commander": "~2.2.0"
   }
