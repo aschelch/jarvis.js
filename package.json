@@ -5,6 +5,7 @@
   "author": "Aurélien Schelcher <aurelien.schelcher@gmail.com>",
   "dependencies": {
     "request": "~2.34.0",
-    "commander": "~2.2.0"
+    "commander": "~2.2.0",
+    "utils-merge": "1.0.0"
   }
 }
