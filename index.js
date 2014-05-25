@@ -19,6 +19,7 @@ var config = require('./config.json');
 jarvis()
     .set("name", "Jarviss")
 
+    // Load middlewares
     .use(irc({server:"irc.test.com",port:9999})) // chat on irc
     .use(mail.sender({})) // send mail
     .use(alarm())
@@ -30,13 +31,17 @@ jarvis()
     .use(mail.receiver({})) // receive mail
     .use(terminal({prompt:"question> "})) // receive mail
     .use(freebox({code:"1234"})) // control freebox
-    .use(tts({voice:"Loic"})) // output with tts
+    .use(tts({ // output with tts
+        voice:"Loic",
+        volume:100
+    }))
     .use(weather({units:"metric", lang:"fr"})) // get weather
     .use(android.push({app_id:"1324"})) // send push notification to android
 
 
+
     .use(function(bot){
-        // add function say that use tts the day, and console log the night
+        // add function say that use tts with different volume according to the time
         bot.say = function(text, fn){
             fn = fn || function(err){};
 
@@ -44,22 +49,27 @@ jarvis()
             if(7 <= now.getHours() && now.getHours() <= 23){
                 bot.tts.say(text, fn);
             }else{
-                console.log(text);
-                fn();
+                bot.tts.say(text, {volume:50}, fn);
             }
         }
     })
 
+    // TVShow torrent download example
     .use(function(bot){
 
-        setInterval(function(){
-            bot.t411.search('silicon valley S01E06', function(err, torrents){
-                console.log(torrents);
-                if(torrents && torrents.total > 0){
-                    bot.say("Monsieur. Le nouvel épisode de Silicon Valley est disponible");
+        var check = setInterval(function(){
+            bot.t411.search('silicon valley S01E07', function(err, res){
+                if(res && res.total > 0){
+
+                    bot.t411.download(res.torrents[0].id, function(err, res){
+                        if(err) {console.log(err);}
+                        bot.say("Monsieur. Le 7ième épisode de Silicon Valley est disponible. ");
+                    });
+
+                    clearInterval(check);
                 }
             });
-        }, 2*60*1000);
+        }, 5*1000);
 
     })
 
