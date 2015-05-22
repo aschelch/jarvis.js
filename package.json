@@ -4,10 +4,17 @@
   "description": "",
   "author": "Aurélien Schelcher <aurelien.schelcher@gmail.com>",
   "dependencies": {
-    "request": "~2.34.0",
+    "body-parser": "~1.10.0",
     "commander": "~2.2.0",
-    "utils-merge": "1.0.0",
+    "express": "~4.10.6",
     "imap": "~0.8.12",
-    "speakable": "~0.3.0"
+    "jade": "~1.8.2",
+    "node-gcm": "~0.9.12",
+    "node-xmpp": "0.10.0",
+    "request": "~2.34.0",
+    "serialport": "^1.7.1",
+    "speakable": "~0.3.0",
+    "twilio": "~1.10.0",
+    "utils-merge": "1.0.0"
   }
 }

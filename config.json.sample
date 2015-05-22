@@ -16,5 +16,8 @@
     "voice_recognition": {
         "key": "",
         "lang": ""
+    },
+    "pushbullet": {
+        "token": ""
     }
 }
