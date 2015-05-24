@@ -205,9 +205,19 @@ jarvis()
 
 
         bot.on("serial", function(data){
+
             console.log(data);
-            //bot.freebox.sendSms("Quelqu'un a ouvert la porte de l'appartement alors que vous n'êtes pas là !");
+
+            if(data.id == 10260868){
+                bot.emit("door:open");
+            }
         });
+
+
+
+        bot.on("door:open", function(){
+            bot.freebox.sendSms("Quelqu'un a ouvert la porte de l'appartement.");
+        })
 
         // Send a SMS
         //bot.freebox.sendSms("Quelqu'un a ouvert la porte de l'appartement alors que vous n'êtes pas là !");
