@@ -208,7 +208,7 @@ jarvis()
 
             console.log(data);
 
-            if(data.id == 10260868){
+            if(data[0].value == 10260868){
                 bot.emit("door:open");
             }
         });
