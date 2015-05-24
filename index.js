@@ -49,7 +49,7 @@ jarvis()
         username: config.t411.username,
         password: config.t411.password
     }))
-/*
+
     .use(googletalk({
         "jid": config.mail.address,
         "password": config.mail.password,
@@ -57,7 +57,7 @@ jarvis()
         "port": 5222,
         "reconnect": true
     }))
-*/
+
 
     // Add device presence detector using Wifi
     .use(presence({
@@ -201,8 +201,10 @@ jarvis()
         // Say hello when we start
         bot.tts.say("Bonjour monsieur.");
 
-        bot.on("serial", function(){
-            bot.freebox.sendSms("Quelqu'un a ouvert la porte de l'appartement alors que vous n'êtes pas là !");
+
+        bot.on("serial", function(data){
+            console.log(data);
+            //bot.freebox.sendSms("Quelqu'un a ouvert la porte de l'appartement alors que vous n'êtes pas là !");
         });
 
         // Send a SMS
