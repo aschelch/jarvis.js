@@ -50,6 +50,7 @@ jarvis()
         password: config.t411.password
     }))
 
+    /*
     .use(googletalk({
         "jid": config.mail.address,
         "password": config.mail.password,
@@ -57,6 +58,7 @@ jarvis()
         "port": 5222,
         "reconnect": true
     }))
+*/
 
 
     // Add device presence detector using Wifi
