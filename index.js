@@ -203,7 +203,6 @@ jarvis()
         // Say hello when we start
         bot.tts.say("Bonjour monsieur.");
 
-
         bot.on("serial", function(data){
 
             console.log(data);
