@@ -65,7 +65,7 @@ jarvis()
     }))
 
     .use(serialport({
-        path: '/dev/tty.usbmodem1411',
+        path: config.serial.path,
         baudrate: 9600
     }))
 

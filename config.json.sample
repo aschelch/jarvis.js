@@ -19,5 +19,8 @@
     },
     "pushbullet": {
         "token": ""
+    },
+    "serial": {
+        "path": "/dev/tty.usbmodem1411"
     }
 }
