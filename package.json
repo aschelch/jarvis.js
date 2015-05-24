@@ -12,7 +12,7 @@
     "node-gcm": "~0.9.12",
     "node-xmpp": "0.10.0",
     "request": "~2.34.0",
-    "serialport": "^1.7.1",
+    "serialport": "1.7.1",
     "speakable": "~0.3.0",
     "twilio": "~1.10.0",
     "utils-merge": "1.0.0"

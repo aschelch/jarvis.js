@@ -63,12 +63,12 @@ jarvis()
     .use(presence({
         broadcastIp : '192.168.0.255'
     }))
-/*
+
     .use(serialport({
         path: '/dev/tty.usbmodem1411',
         baudrate: 9600
     }))
-*/
+
     .use(remind())
 /*
     .use(mail.receiver({
