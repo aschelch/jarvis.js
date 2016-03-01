@@ -5,7 +5,8 @@
 var jarvis   = require('./lib/jarvis');
 
 var freebox  = require('./lib/middleware/freebox');
-var tts      = require('./lib/middleware/tts');
+var tts_voicerss      = require('./lib/middleware/tts-voicerss');
+var tts_voxygen      = require('./lib/middleware/tts-voxygen');
 var android  = require('./lib/middleware/android');
 var mail     = require('./lib/middleware/mail');
 var irc      = require('./lib/middleware/irc');
@@ -65,12 +66,12 @@ jarvis()
     .use(presence({
         broadcastIp : '192.168.0.255'
     }))
-
+/*
     .use(serialport({
         path: config.serial.path,
         baudrate: 9600
     }))
-
+*/
     .use(remind())
 /*
     .use(mail.receiver({
@@ -78,17 +79,24 @@ jarvis()
         password: config.mail.password
     })) // receive mail
 */
-    .use(terminal({prompt:"question> "})) // receive mail
+    .use(terminal({prompt:"$> "})) // receive mail
     .use(freebox({
         code: config.freebox.code,
         user: config.freebox.user,
         pass: config.freebox.pass,
     })) // control freebox
 
-    .use(tts({ // output with tts
+    /*
+    .use(tts_voxygen({ // output with tts
         voice: config.tts.voice,
         volume: 100
     }))
+*/
+
+    .use(tts_voicerss({
+        key: 'dcd2728545eb4841b99e7bd2ee647575',
+    }))
+
 
     .use(weather({units:"metric", lang:"fr"})) // get weather
 
@@ -294,10 +302,33 @@ jarvis()
 
             bot.log(message);
 
-            if(message.indexOf("mute") > -1){
+            if(message.indexOf("zap") > -1){
+                bot.freebox.pressKey("1");
+                setTimeout(function(){
+                    bot.freebox.pressKey("2");
+                    setTimeout(function(){
+                        bot.freebox.pressKey("3");
+                        setTimeout(function(){
+                            bot.freebox.pressKey("5");
+                            setTimeout(function(){
+                                bot.freebox.pressKey("6");
+                                setTimeout(function(){
+                                    bot.freebox.pressKey("7");
+                                    setTimeout(function(){
+                                        bot.freebox.pressKey("8");
+                                    }, 4000);
+                                }, 4000);
+                            }, 4000);
+                        }, 4000);
+                    }, 4000);
+                }, 4000);
+                
+            }else if(message.indexOf("mute") > -1){
                 bot.freebox.mute();
             }else if(message.indexOf("tf1") > -1){
                 bot.freebox.pressKey("1");
+            }else if(message.indexOf("m6") > -1){
+                bot.freebox.pressKey("6");
             }else if(message.indexOf("fr2") > -1 || message.indexOf("france2") > -1){
                 bot.freebox.pressKey("2");
             }else if(message.indexOf("d8") > -1){
@@ -330,7 +361,7 @@ jarvis()
 
         });
 
-        // bot.on("message", function(){
+        //bot.on("message", function(){
         //     bot.say(["Je ne suis pas sûr de comprendre", "Je ne sais pas quoi dire"]);
-        // });
+        //});
     });
